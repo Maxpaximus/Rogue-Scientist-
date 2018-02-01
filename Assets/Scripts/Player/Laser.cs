@@ -54,7 +54,7 @@ public class Laser : MonoBehaviour
         }
     }
 
-   public void TakeEnergy()
+    public void TakeEnergy()
     {
         CurrentEnergy = Mathf.Clamp(CurrentEnergy - 0.1f, 0f, TotalEnergy);
         EnergyBar.transform.localScale = new Vector3(Mathf.Clamp(CurrentEnergy / TotalEnergy, 0f, 1f), 1, 1);
@@ -62,7 +62,6 @@ public class Laser : MonoBehaviour
     }
 
     public void TakeTimeEnergy()
-
     {
         CurrentEnergy = Mathf.Clamp(CurrentEnergy - 17.5f, 0f, TotalEnergy);
         EnergyBar.transform.localScale = new Vector3(Mathf.Clamp(CurrentEnergy / TotalEnergy, 0f, 1f), 1, 1);
@@ -76,7 +75,7 @@ public class Laser : MonoBehaviour
 
     }
 
-   public void AddEnergy()
+    public void AddEnergy()
     {
         CurrentEnergy = Mathf.Clamp(CurrentEnergy + 0.1f, 0f, TotalEnergy);
         EnergyBar.transform.localScale = new Vector3(Mathf.Clamp(CurrentEnergy / TotalEnergy, 0f, 1f), 1, 1);
