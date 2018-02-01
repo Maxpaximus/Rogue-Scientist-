@@ -7,9 +7,10 @@ public class FreezingTime : MonoBehaviour
     public Laser laser;
     void Update()
     {
-        if (Input.GetKey(KeyCode.C) && laser.CurrentEnergy > 0)
+        if (Input.GetKeyDown(KeyCode.C) && laser.CurrentEnergy > 0)
         {
             laser.TakeTimeEnergy();
+            Debug.Log("hej");
         }
     }
 }

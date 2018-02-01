@@ -10,6 +10,9 @@ public class Parry : MonoBehaviour
     public float lastParry;
     private float parryCooldown;
     public float parryCoolown2;
+    public Laser laser;
+    
+    
 
     public DamageScript damageScript;
 
@@ -28,11 +31,11 @@ public class Parry : MonoBehaviour
 	
 	void Update ()
     {
-		if (Input.GetKeyDown(KeyCode.X) && Time.time - lastParry >= parryCooldown)
+		if (Input.GetKeyDown(KeyCode.X) && Time.time - lastParry >= parryCooldown && laser.CurrentEnergy > 24)
         {
             lastParry = Time.time;
             parry();
-           
+            laser.TakeParryEnergy();
         }
 
         if (Time.time - lastParry >= parryTime)
