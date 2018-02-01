@@ -170,7 +170,7 @@ Transform:
   - {fileID: 1252236101}
   - {fileID: 1942134971}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &122510977
 GameObject:
@@ -352,10 +352,10 @@ Transform:
   m_GameObject: {fileID: 179978359}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -16.737442, y: 8.28, z: -200}
-  m_LocalScale: {x: 1.6762743, y: 1.2081256, z: 1.2081256}
+  m_LocalScale: {x: 1.6762742, y: 1.2081256, z: 1.2081256}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &303287813
 Prefab:
@@ -408,7 +408,7 @@ Prefab:
     - target: {fileID: 114655399843283968, guid: 289efce785d955644b0fbf5d3488c25f,
         type: 2}
       propertyPath: forceUp
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 50603201972156898, guid: 289efce785d955644b0fbf5d3488c25f,
         type: 2}
@@ -429,6 +429,16 @@ Prefab:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114655399843283968, guid: 289efce785d955644b0fbf5d3488c25f,
+        type: 2}
+      propertyPath: waitTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114655399843283968, guid: 289efce785d955644b0fbf5d3488c25f,
+        type: 2}
+      propertyPath: arrow
+      value: 
+      objectReference: {fileID: 1871009715}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 289efce785d955644b0fbf5d3488c25f, type: 2}
   m_IsPrefabParent: 0
@@ -631,7 +641,7 @@ Transform:
   - {fileID: 171327054}
   - {fileID: 1124569619}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &363741183
 Rigidbody2D:
@@ -974,7 +984,7 @@ Transform:
   - {fileID: 1696042818}
   - {fileID: 1501969171}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &732588506
 GameObject:
@@ -1332,6 +1342,7 @@ GameObject:
   - component: {fileID: 948882923}
   - component: {fileID: 948882928}
   - component: {fileID: 948882929}
+  - component: {fileID: 948882930}
   m_Layer: 0
   m_Name: Enemy Warrior
   m_TagString: Enemy
@@ -1441,7 +1452,7 @@ Transform:
   - {fileID: 949395967}
   - {fileID: 537787980}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &948882928
 MonoBehaviour:
@@ -1487,6 +1498,19 @@ MonoBehaviour:
   lastAttackTime: 0
   attackDelay: 3
   damageScript: {fileID: 363741185}
+--- !u!114 &948882930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 948882922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 250c68976867dd440a8c5bff0b845fcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 10
+  Damage: 5
 --- !u!1 &949395966
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,7 +1703,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1252236100
 GameObject:
@@ -1825,7 +1849,7 @@ Transform:
   m_LocalScale: {x: 42.468754, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1394555751
 GameObject:
@@ -2317,7 +2341,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1485930018
 GameObject:
@@ -10261,7 +10285,7 @@ RectTransform:
   - {fileID: 599366405}
   - {fileID: 122510978}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -32105,12 +32129,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1979828831}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3adc67c993bf7a741b39434dfb273d2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 84dd37b9fd4c1d144bd68a7edde81a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TotalEnergy: 100
   CurrentEnergy: 100
-  LaserLenght: 0
+  LaserLenght: 7
   EnergyBar: {fileID: 122510977}
 --- !u!1 &2037779678
 GameObject:
@@ -32322,6 +32346,7 @@ GameObject:
   - component: {fileID: 2094292325}
   - component: {fileID: 2094292324}
   - component: {fileID: 2094292323}
+  - component: {fileID: 2094292330}
   m_Layer: 0
   m_Name: Enemy Archer
   m_TagString: Enemy
@@ -32477,5 +32502,18 @@ Transform:
   - {fileID: 1395705728}
   - {fileID: 1794281394}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2094292330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2094292322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 250c68976867dd440a8c5bff0b845fcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 10
+  Damage: 5
