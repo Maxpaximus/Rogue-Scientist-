@@ -70,7 +70,7 @@ public class Laser : MonoBehaviour
 
     public void TakeParryEnergy()
     {
-        CurrentEnergy = Mathf.Clamp(CurrentEnergy - 0.1f, 0f, TotalEnergy);
+        CurrentEnergy = Mathf.Clamp(CurrentEnergy - 25f, 0f, TotalEnergy);
         EnergyBar.transform.localScale = new Vector3(Mathf.Clamp(CurrentEnergy / TotalEnergy, 0f, 1f), 1, 1);
 
     }
