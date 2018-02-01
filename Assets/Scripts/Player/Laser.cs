@@ -33,6 +33,14 @@ public class Laser : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0) && CurrentEnergy > 0f)
         {
             RaycastHit2D hit = Physics2D.Raycast(firepoint.transform.position, transform.right * LaserLenght);
+            if (hit.collider != null && hit.collider.gameObject.tag == "Enemy")
+            {
+                EnemyDamage enemyDamage = hit.collider.GetComponent<EnemyDamage>(); // Döp om till EnemyDamage
+                if (enemyDamage != null)
+                {
+                    enemyDamage.TakeDamage();
+                }
+            }
             Debug.DrawRay(firepoint.transform.position, transform.right * LaserLenght, Color.red);
         }
 
