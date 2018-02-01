@@ -59,7 +59,7 @@ public class ArrowOptional : MonoBehaviour {
         }
         else if (Time.time - lastTurn > timeUp && up && arrowThrow)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2((target.position.x - transform.position.x) / timeDown, (-transform.position.y + target.position.y) / timeDown);
+            GetComponent<Rigidbody2D>().velocity = new Vector2((target.position.x - transform.position.x) / timeDown, (-transform.position.y + arrowSpawn.position.y - 0.69f) / timeDown);
             up = false;
             lastTurn = Time.time;
         }
