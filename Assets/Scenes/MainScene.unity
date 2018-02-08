@@ -554,6 +554,7 @@ GameObject:
   - component: {fileID: 363741180}
   - component: {fileID: 363741184}
   - component: {fileID: 363741185}
+  - component: {fileID: 363741186}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -675,15 +676,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpHeigt: 15
+  jumpHeight: 15
   shiftSpeed: 0.9
-  groundCheck: {fileID: 171327054}
   groundCheckRadius: 0
+  freezeDuration: 3
+  grounded: 0
+  doublejumed: 0
+  groundCheck: {fileID: 171327054}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  grounded: 0
-  doublejumed: 0
+  freezingTime: {fileID: 363741186}
 --- !u!114 &363741185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -700,6 +703,20 @@ MonoBehaviour:
   damage: 20
   hitpoints: 3
   player: {fileID: 363741180}
+--- !u!114 &363741186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 363741178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c90060a474768804db7a4c0a1cc1ad66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laser: {fileID: 1979828833}
+  cooldownFreeze: 5
+  lastFreeze: 0
 --- !u!1 &434330328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,8 +1526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250c68976867dd440a8c5bff0b845fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  Damage: 5
 --- !u!1 &949395966
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,9 +1654,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sphere: {fileID: 1124569618}
-  parryTime: 4
-  lastParry: 0
-  parryCoolown2: 8
+  parryTime: 0.8
+  laser: {fileID: 1979828833}
   damageScript: {fileID: 363741185}
 --- !u!1 &1229787661
 GameObject:
@@ -32132,10 +32146,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84dd37b9fd4c1d144bd68a7edde81a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalEnergy: 100
-  CurrentEnergy: 100
-  LaserLenght: 7
-  EnergyBar: {fileID: 122510977}
+  totalEnergy: 0
+  currentEnergy: 100
+  laserLength: 0
+  energyBar: {fileID: 122510977}
 --- !u!1 &2037779678
 GameObject:
   m_ObjectHideFlags: 0
@@ -32515,5 +32529,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250c68976867dd440a8c5bff0b845fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  Damage: 5

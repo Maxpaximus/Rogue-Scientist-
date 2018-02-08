@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    public float TotalEnergy;
-    public float CurrentEnergy = 100;
-    public float LaserLenght;
-    public GameObject EnergyBar;
+    public float totalEnergy;
+    public float currentEnergy = 100;
+    public float laserLength;
+    public GameObject energyBar;
 
     private Transform firepoint;
 
@@ -16,7 +16,7 @@ public class Laser : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        TotalEnergy = CurrentEnergy;
+        totalEnergy = currentEnergy;
 
         firepoint = transform.GetChild(0);
     }
@@ -30,9 +30,9 @@ public class Laser : MonoBehaviour
         float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotation_z);
 
-        if (Input.GetKey(KeyCode.Mouse0) && CurrentEnergy > 0f)
+        if (Input.GetKey(KeyCode.Mouse0) && currentEnergy > 0f)
         {
-            RaycastHit2D hit = Physics2D.Raycast(firepoint.transform.position, transform.right * LaserLenght);
+            RaycastHit2D hit = Physics2D.Raycast(firepoint.transform.position, transform.right * laserLength);
             if (hit.collider != null && hit.collider.gameObject.tag == "Enemy")
             {
                 EnemyDamage enemyDamage = hit.collider.GetComponent<EnemyDamage>(); // Döp om till EnemyDamage
@@ -41,7 +41,7 @@ public class Laser : MonoBehaviour
                     enemyDamage.TakeDamage();
                 }
             }
-            Debug.DrawRay(firepoint.transform.position, transform.right * LaserLenght, Color.red);
+            Debug.DrawRay(firepoint.transform.position, transform.right * laserLength, Color.red);
         }
 
         if (Input.GetKey(KeyCode.Mouse0))
@@ -56,28 +56,28 @@ public class Laser : MonoBehaviour
 
     public void TakeEnergy()
     {
-        CurrentEnergy = Mathf.Clamp(CurrentEnergy - 0.1f, 0f, TotalEnergy);
-        EnergyBar.transform.localScale = new Vector3(Mathf.Clamp(CurrentEnergy / TotalEnergy, 0f, 1f), 1, 1);
+        currentEnergy = Mathf.Clamp(currentEnergy - 0.1f, 0f, totalEnergy);
+        energyBar.transform.localScale = new Vector3(Mathf.Clamp(currentEnergy / totalEnergy, 0f, 1f), 1, 1);
        
     }
 
     public void TakeTimeEnergy()
     {
-        CurrentEnergy = Mathf.Clamp(CurrentEnergy - 17.5f, 0f, TotalEnergy);
-        EnergyBar.transform.localScale = new Vector3(Mathf.Clamp(CurrentEnergy / TotalEnergy, 0f, 1f), 1, 1);
+        currentEnergy = Mathf.Clamp(currentEnergy - 50f, 0f, totalEnergy);
+        energyBar.transform.localScale = new Vector3(Mathf.Clamp(currentEnergy / totalEnergy, 0f, 1f), 1, 1);
 
     }
 
     public void TakeParryEnergy()
     {
-        CurrentEnergy = Mathf.Clamp(CurrentEnergy - 25f, 0f, TotalEnergy);
-        EnergyBar.transform.localScale = new Vector3(Mathf.Clamp(CurrentEnergy / TotalEnergy, 0f, 1f), 1, 1);
+        currentEnergy = Mathf.Clamp(currentEnergy - 20f, 0f, totalEnergy);
+        energyBar.transform.localScale = new Vector3(Mathf.Clamp(currentEnergy / totalEnergy, 0f, 1f), 1, 1);
 
     }
 
     public void AddEnergy()
     {
-        CurrentEnergy = Mathf.Clamp(CurrentEnergy + 0.1f, 0f, TotalEnergy);
-        EnergyBar.transform.localScale = new Vector3(Mathf.Clamp(CurrentEnergy / TotalEnergy, 0f, 1f), 1, 1);
+        currentEnergy = Mathf.Clamp(currentEnergy + 0.1f, 0f, totalEnergy);
+        energyBar.transform.localScale = new Vector3(Mathf.Clamp(currentEnergy / totalEnergy, 0f, 1f), 1, 1);
     }
 }

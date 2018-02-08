@@ -2,12 +2,12 @@
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float enemySpeed;
 
     private bool left = true;
-    public float goTime = 1;
     private float lastTurn;
 
+    public EnemySpeedController enemySpeedController;
+    public GameObject enemySpeed;
     public Transform humanCheck1;
     public Transform humanCheck2;
     public Transform humanCheck3;
@@ -28,6 +28,9 @@ public class EnemyMovement : MonoBehaviour
     {
         patroll = true;
         lastTurn = Time.time;
+
+        enemySpeed = GameObject.Find("EnemySpeedController");
+        enemySpeedController = enemySpeed.GetComponent<EnemySpeedController>();
     }
 
     void Update ()
@@ -45,12 +48,12 @@ public class EnemyMovement : MonoBehaviour
             patroll = false;
         }
 
-        if (left && Time.time - lastTurn >= goTime)
+        if (left && Time.time - lastTurn >= enemySpeedController.goTime)
         {
             left = false;
             lastTurn = Time.time;
         }
-        else if (!left && Time.time - lastTurn > goTime)
+        else if (!left && Time.time - lastTurn > enemySpeedController.goTime)
         {
             left = true;
             lastTurn = Time.time;
@@ -58,22 +61,22 @@ public class EnemyMovement : MonoBehaviour
 
 		if(left && patroll)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-enemySpeed, GetComponent<Rigidbody2D>().velocity.y);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(-enemySpeedController.enemySpeed, GetComponent<Rigidbody2D>().velocity.y);
         }
         else if (patroll)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(enemySpeed, GetComponent<Rigidbody2D>().velocity.y);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(enemySpeedController.enemySpeed, GetComponent<Rigidbody2D>().velocity.y);
         }
 
         if (!patroll)
         {
             if (player.position.x < transform.position.x && !nearHuman1 && !nearHuman2 && !nearHuman3)
             {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(-enemySpeed * 1.5f, GetComponent<Rigidbody2D>().velocity.y);
+                GetComponent<Rigidbody2D>().velocity = new Vector2(-enemySpeedController.enemySpeed * 1.5f, GetComponent<Rigidbody2D>().velocity.y);
             }
             else if (!nearHuman1 && !nearHuman2 && !nearHuman3)
             {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(enemySpeed * 1.5f, GetComponent<Rigidbody2D>().velocity.y);
+                GetComponent<Rigidbody2D>().velocity = new Vector2(enemySpeedController.enemySpeed * 1.5f, GetComponent<Rigidbody2D>().velocity.y);
             }
         }
         
