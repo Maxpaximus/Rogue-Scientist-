@@ -366,7 +366,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4188357073749336, guid: 289efce785d955644b0fbf5d3488c25f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.06
+      value: 0.059999943
       objectReference: {fileID: 0}
     - target: {fileID: 4188357073749336, guid: 289efce785d955644b0fbf5d3488c25f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -378,15 +378,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4188357073749336, guid: 289efce785d955644b0fbf5d3488c25f, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4188357073749336, guid: 289efce785d955644b0fbf5d3488c25f, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4188357073749336, guid: 289efce785d955644b0fbf5d3488c25f, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4188357073749336, guid: 289efce785d955644b0fbf5d3488c25f, type: 2}
       propertyPath: m_LocalRotation.w
@@ -404,6 +404,48 @@ Prefab:
     - target: {fileID: 1624225799627822, guid: 289efce785d955644b0fbf5d3488c25f, type: 2}
       propertyPath: m_Name
       value: Arrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 114655399843283968, guid: 289efce785d955644b0fbf5d3488c25f,
+        type: 2}
+      propertyPath: forceUp
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 50603201972156898, guid: 289efce785d955644b0fbf5d3488c25f,
+        type: 2}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114655399843283968, guid: 289efce785d955644b0fbf5d3488c25f,
+        type: 2}
+      propertyPath: arrowSpawn
+      value: 
+      objectReference: {fileID: 1794281394}
+    - target: {fileID: 1624225799627822, guid: 289efce785d955644b0fbf5d3488c25f, type: 2}
+      propertyPath: m_TagString
+      value: Arrows
+      objectReference: {fileID: 0}
+    - target: {fileID: 50603201972156898, guid: 289efce785d955644b0fbf5d3488c25f,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114655399843283968, guid: 289efce785d955644b0fbf5d3488c25f,
+        type: 2}
+      propertyPath: timeUp
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114655399843283968, guid: 289efce785d955644b0fbf5d3488c25f,
+        type: 2}
+      propertyPath: timeDown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4188357073749336, guid: 289efce785d955644b0fbf5d3488c25f, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4188357073749336, guid: 289efce785d955644b0fbf5d3488c25f, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 289efce785d955644b0fbf5d3488c25f, type: 2}
@@ -31919,8 +31961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitTime: 4
   lastSpawn: 0
-  arrowPrefab: {fileID: 1624225799627822, guid: 289efce785d955644b0fbf5d3488c25f,
-    type: 2}
+  arrow: {fileID: 1871009715}
 --- !u!1 &1855017821
 GameObject:
   m_ObjectHideFlags: 0
@@ -31949,6 +31990,11 @@ Transform:
   m_Father: {fileID: 2094292329}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1871009715 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1624225799627822, guid: 289efce785d955644b0fbf5d3488c25f,
+    type: 2}
+  m_PrefabInternal: {fileID: 303287813}
 --- !u!1 &1942134968
 GameObject:
   m_ObjectHideFlags: 0
@@ -32080,8 +32126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3adc67c993bf7a741b39434dfb273d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalEnergy: 0
-  CurrentEnergy: 0
+  TotalEnergy: 100
+  CurrentEnergy: 100
+  LaserLenght: 0
   EnergyBar: {fileID: 122510977}
 --- !u!1 &2037779678
 GameObject:
