@@ -7,13 +7,9 @@ public class Parry : MonoBehaviour
     private CircleCollider2D circleCollider;
 
     public float parryTime;
-    public float lastParry;
-    private float parryCooldown;
-    public float parryCoolown2;
+    private float lastParry;
     public Laser laser;
-    
-    
-
+    private bool parryActive;
     public DamageScript damageScript;
 
 	// Use this for initialization
@@ -24,21 +20,34 @@ public class Parry : MonoBehaviour
 
         circleCollider = sphere.GetComponent<CircleCollider2D>();
         circleCollider.enabled = false;
+        lastParry = Time.time - parryTime;
 
-        parryCooldown = 0;
     }
 	
 	
 	void Update ()
     {
-		if (Input.GetKeyDown(KeyCode.X) && Time.time - lastParry >= parryCooldown && laser.CurrentEnergy > 24)
+		if (Input.GetKeyDown(KeyCode.X) && laser.currentEnergy > 24)
         {
-            lastParry = Time.time;
             parry();
             laser.TakeParryEnergy();
+            parryActive = true;
+            lastParry = Time.time;
+        }
+        else
+        {
+            parryActive = false;
         }
 
-        if (Time.time - lastParry >= parryTime)
+
+        if (parryActive && Time.time - lastParry < parryTime)
+        {
+            
+            sphereMesh.enabled = true;
+            circleCollider.enabled = true;
+            parryActive = true;
+        }
+        else if (Time.time - lastParry > parryTime)
         {
             sphereMesh.enabled = false;
             circleCollider.enabled = false;
@@ -48,7 +57,6 @@ public class Parry : MonoBehaviour
 	}
     void parry()
     {
-        parryCooldown = parryCoolown2;
         sphereMesh.enabled = true;
         circleCollider.enabled = true;
         damageScript.Parried();

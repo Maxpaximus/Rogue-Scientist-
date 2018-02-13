@@ -3,15 +3,18 @@
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5;
-    public float jumpHeigt = 15;
+    public float jumpHeight = 15;
     public float shiftSpeed = 0.5f;
-
-    public Transform groundCheck;
     public float groundCheckRadius;
-    public LayerMask whatIsGround;
+    public float freezeDuration;
     public bool grounded;
     public bool doublejumed;
+    private float lastFreeze;
+    public Transform groundCheck;
+    public LayerMask whatIsGround;
+    public FreezingTime freezingTime;
     bool shift;
+    bool slow = false;
 
     private void FixedUpdate()
     {
@@ -28,13 +31,16 @@ public class PlayerController : MonoBehaviour
 
     void Update ()
     {
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+        transform.localPosition += new Vector3(h, 0, v) * Time.fixedDeltaTime * speed;
         if (grounded)
         {
             doublejumed = false;
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
             {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeigt);
+                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
             }
         }
         
@@ -42,7 +48,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
             {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeigt);
+                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
                 doublejumed = true;
             }
         }
@@ -69,7 +75,8 @@ public class PlayerController : MonoBehaviour
             {
                 GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, GetComponent<Rigidbody2D>().velocity.y);
             }
+           
         }
-       
+
     }
 }
